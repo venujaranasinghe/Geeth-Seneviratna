@@ -1,5 +1,6 @@
-/* About Section Variables */
+/* ===== CSS VARIABLES ===== */
 :root {
+  /* Colors */
   --about-bg-primary: #0a0a0a;
   --about-bg-secondary: #111111;
   --about-bg-tertiary: #1a1a1a;
@@ -14,25 +15,42 @@
   --about-border-light: #3f3f46;
   --about-success-color: #10b981;
   --about-warning-color: #f59e0b;
-  --about-gradient: linear-gradient(135deg, var(--about-accent-primary) 0%, var(--about-accent-secondary) 100%);
-}
 
-/* Base Styles */
-.about-container {
-  position: relative;
-  min-height: 100vh;
-  background: linear-gradient(
+  /* Gradients */
+  --about-gradient: linear-gradient(135deg, var(--about-accent-primary) 0%, var(--about-accent-secondary) 100%);
+  --about-bg-gradient: linear-gradient(
     135deg,
     var(--about-bg-primary) 0%,
     var(--about-bg-secondary) 50%,
     var(--about-bg-tertiary) 100%
   );
+
+  /* Spacing */
+  --about-section-padding: 6rem 2rem;
+  --about-content-gap: 4rem;
+  --about-card-padding: 2rem;
+
+  /* Transitions */
+  --about-transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --about-transition-fast: all 0.4s ease;
+  --about-hover-transition: all 0.3s ease;
+
+  /* Shadows */
+  --about-card-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  --about-hover-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== BASE STYLES ===== */
+.about-container {
+  position: relative;
+  min-height: 100vh;
+  background: var(--about-bg-gradient);
   color: var(--about-text-primary);
-  padding: 6rem 2rem;
+  padding: var(--about-section-padding);
   overflow: hidden;
 }
 
-/* Background Effects */
+/* ===== BACKGROUND EFFECTS ===== */
 .about-background {
   position: absolute;
   inset: 0;
@@ -58,15 +76,15 @@
   animation: gradientPulse 8s ease-in-out infinite;
 }
 
-/* Section Header */
+/* ===== SECTION HEADER ===== */
 .about-header {
   position: relative;
   z-index: 10;
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: var(--about-content-gap);
   opacity: 0;
   transform: translateY(40px);
-  transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: var(--about-transition);
 }
 
 .about-header.visible {
@@ -123,18 +141,18 @@
   line-height: 1.6;
 }
 
-/* Main Content */
+/* ===== MAIN CONTENT LAYOUT ===== */
 .about-content {
   position: relative;
   z-index: 10;
   display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 4rem;
+  grid-template-columns: 1fr 1.8fr;
+  gap: 2.5rem;
   max-width: 1400px;
   margin: 0 auto 6rem;
   opacity: 0;
   transform: translateY(40px);
-  transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
+  transition: var(--about-transition) 0.3s;
 }
 
 .about-content.visible {
@@ -142,7 +160,7 @@
   transform: translateY(0);
 }
 
-/* Profile Section */
+/* ===== PROFILE SECTION ===== */
 .profile-section {
   display: flex;
   justify-content: center;
@@ -153,14 +171,18 @@
   background: var(--about-bg-card);
   border: 1px solid var(--about-border-color);
   border-radius: 24px;
-  padding: 2rem;
+  padding: 1.5rem;
   backdrop-filter: blur(15px);
-  transition: all 0.4s ease;
+  transition: var(--about-transition-fast);
+  box-shadow: var(--about-card-shadow);
+  max-width: 320px;
+  margin: 0 auto;
 }
 
 .profile-card:hover {
   border-color: var(--about-border-light);
   transform: translateY(-5px);
+  box-shadow: var(--about-hover-shadow);
 }
 
 .profile-image-container {
@@ -178,12 +200,12 @@
 }
 
 .profile-image {
-  width: 280px;
-  height: 280px;
+  width: 250px;
+  height: 250px;
   object-fit: cover;
   border-radius: 20px;
   filter: grayscale(20%) contrast(1.1);
-  transition: all 0.4s ease;
+  transition: var(--about-transition-fast);
 }
 
 .profile-overlay {
@@ -197,7 +219,7 @@
   padding: 0.75rem;
   opacity: 0;
   transform: translateY(10px);
-  transition: all 0.3s ease;
+  transition: var(--about-hover-transition);
 }
 
 .profile-card:hover .profile-overlay {
@@ -247,25 +269,25 @@
   font-size: 0.9rem;
 }
 
-/* Content Section */
+/* ===== CONTENT SECTION ===== */
 .content-section {
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-}
-
-.about-text {
   display: flex;
   flex-direction: column;
   gap: 2rem;
 }
 
+.about-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
 .text-block {
-  padding: 1.5rem;
+  padding: 1.25rem;
   background: var(--about-bg-card);
   border: 1px solid var(--about-border-color);
   border-radius: 16px;
-  transition: all 0.3s ease;
+  transition: var(--about-hover-transition);
 }
 
 .text-block:hover {
@@ -291,7 +313,7 @@
   font-weight: 600;
 }
 
-/* Experience Timeline */
+/* ===== EXPERIENCE TIMELINE ===== */
 .experience-section {
   margin-top: 2rem;
 }
@@ -340,7 +362,7 @@
   border: 1px solid var(--about-border-color);
   border-radius: 12px;
   padding: 1.5rem;
-  transition: all 0.3s ease;
+  transition: var(--about-hover-transition);
 }
 
 .timeline-content:hover {
@@ -375,7 +397,7 @@
   line-height: 1.6;
 }
 
-/* Skills Section */
+/* ===== SKILLS SECTION ===== */
 .skills-section {
   position: relative;
   z-index: 10;
@@ -383,7 +405,7 @@
   margin: 0 auto 6rem;
   opacity: 0;
   transform: translateY(40px);
-  transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: var(--about-transition);
 }
 
 .skills-section.animated {
@@ -419,7 +441,7 @@
   border: 1px solid var(--about-border-color);
   border-radius: 16px;
   padding: 1.5rem;
-  transition: all 0.4s ease;
+  transition: var(--about-transition-fast);
   opacity: 0;
   transform: translateY(20px);
   animation: slideInUp 0.6s ease forwards;
@@ -474,7 +496,7 @@
   font-weight: 500;
 }
 
-/* Achievements Section */
+/* ===== ACHIEVEMENTS SECTION ===== */
 .achievements-section {
   position: relative;
   z-index: 10;
@@ -482,7 +504,7 @@
   margin: 0 auto 6rem;
   opacity: 0;
   transform: translateY(40px);
-  transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: var(--about-transition);
 }
 
 .achievements-section.animated {
@@ -501,9 +523,9 @@
   background: var(--about-bg-card);
   border: 1px solid var(--about-border-color);
   border-radius: 20px;
-  padding: 2rem;
+  padding: var(--about-card-padding);
   text-align: center;
-  transition: all 0.4s ease;
+  transition: var(--about-transition-fast);
   opacity: 0;
   transform: translateY(20px);
   animation: slideInUp 0.6s ease forwards;
@@ -550,7 +572,7 @@
   opacity: 0.1;
 }
 
-/* Call to Action */
+/* ===== CALL TO ACTION ===== */
 .about-cta {
   position: relative;
   z-index: 10;
@@ -559,7 +581,7 @@
   margin: 0 auto;
   opacity: 0;
   transform: translateY(40px);
-  transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.5s;
+  transition: var(--about-transition) 0.5s;
 }
 
 .about-cta.visible {
@@ -605,7 +627,7 @@
   border-radius: 50px;
   text-decoration: none;
   font-weight: 500;
-  transition: all 0.4s ease;
+  transition: var(--about-transition-fast);
   overflow: hidden;
 }
 
@@ -647,7 +669,7 @@
   left: 100%;
 }
 
-/* Animations */
+/* ===== ANIMATIONS ===== */
 @keyframes gradientPulse {
   0%,
   100% {
@@ -689,7 +711,7 @@
   }
 }
 
-/* Responsive Design */
+/* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 1024px) {
   .about-content {
     grid-template-columns: 1fr;
@@ -710,8 +732,10 @@
 }
 
 @media (max-width: 768px) {
-  .about-container {
-    padding: 4rem 1rem;
+  :root {
+    --about-section-padding: 4rem 1rem;
+    --about-content-gap: 3rem;
+    --about-card-padding: 1.5rem;
   }
 
   .section-title {
@@ -721,10 +745,6 @@
   .profile-image {
     width: 220px;
     height: 220px;
-  }
-
-  .profile-card {
-    padding: 1.5rem;
   }
 
   .text-block {
@@ -766,8 +786,8 @@
 }
 
 @media (max-width: 480px) {
-  .about-container {
-    padding: 3rem 1rem;
+  :root {
+    --about-section-padding: 3rem 1rem;
   }
 
   .section-badge {

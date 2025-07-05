@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { Link } from "react-scroll"
-import { FaBars, FaTimes, FaHome, FaUser, FaBriefcase, FaEnvelope, FaCog } from "react-icons/fa"
+import { FaTimes, FaHome, FaUser, FaBriefcase, FaEnvelope, FaCog, FaBars } from "react-icons/fa"
 import "./Navbar.css"
 
 const Navbar = () => {
@@ -10,13 +10,23 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState("home")
 
+  // Navigation items configuration
+  const navItems = [
+    { name: "Home", to: "home", icon: FaHome },
+    { name: "About", to: "about", icon: FaUser },
+    { name: "Services", to: "services", icon: FaCog },
+    { name: "Portfolio", to: "portfolio", icon: FaBriefcase },
+    { name: "Contact", to: "contact", icon: FaEnvelope },
+  ]
+
+  // Handle scroll effects
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY
       setIsScrolled(scrollPosition > 50)
 
       // Update active section based on scroll position
-      const sections = ["home", "about", "services", "work", "contact"]
+      const sections = navItems.map((item) => item.to)
       const currentSection = sections.find((section) => {
         const element = document.getElementById(section)
         if (element) {
@@ -35,28 +45,17 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen)
-  }
-
-  const closeMenu = () => {
-    setIsMenuOpen(false)
-  }
-
-  const navItems = [
-    { name: "Home", to: "home", icon: FaHome },
-    { name: "About", to: "about", icon: FaUser },
-    { name: "Services", to: "services", icon: FaCog },
-    { name: "Portfolio", to: "work", icon: FaBriefcase },
-    { name: "Contact", to: "contact", icon: FaEnvelope },
-  ]
+  // Menu handlers
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
+  const closeMenu = () => setIsMenuOpen(false)
 
   return (
     <>
+      {/* Main Navbar */}
       <nav className={`navbar ${isScrolled ? "scrolled" : ""}`}>
-        {/* Logo/Brand */}
+        {/* Brand Logo */}
         <div className="nav-brand">
-          <Link to="home" smooth={true} duration={500} className="brand-link">
+          <Link to="home" smooth={true} duration={500} className="brand-link" onClick={closeMenu}>
             <div className="brand-container">
               <span className="brand-text">Geeth</span>
               <div className="brand-dot"></div>
@@ -64,8 +63,8 @@ const Navbar = () => {
           </Link>
         </div>
 
-        {/* Desktop Navigation */}
-        <ul className="nav-menu">
+        {/* Desktop Navigation Menu */}
+        <ul className="nav-menu desktop-menu">
           {navItems.map((item, index) => (
             <li key={index} className="nav-item">
               <Link
@@ -84,14 +83,13 @@ const Navbar = () => {
           ))}
         </ul>
 
-        {/* Contact Button */}
-        <div className="nav-actions">
+        {/* Desktop Actions */}
+        <div className="nav-actions desktop-actions">
           <Link to="contact" smooth={true} duration={500} offset={-80} className="nav-contact-btn">
             <span className="btn-text">Let's Talk</span>
             <div className="btn-shine"></div>
           </Link>
 
-          {/* Theme Toggle (Optional) */}
           <button className="theme-toggle" title="Toggle Theme">
             <div className="toggle-track">
               <div className="toggle-thumb"></div>
@@ -100,20 +98,19 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Menu Button */}
-        <button className="nav-mobile-toggle" onClick={toggleMenu} aria-label="Toggle Menu">
+        <button className="nav-mobile-toggle" onClick={toggleMenu} aria-label="Toggle Menu" aria-expanded={isMenuOpen}>
           <div className="hamburger-container">
-            <span className={`hamburger-line ${isMenuOpen ? "open" : ""}`}></span>
-            <span className={`hamburger-line ${isMenuOpen ? "open" : ""}`}></span>
-            <span className={`hamburger-line ${isMenuOpen ? "open" : ""}`}></span>
+            {isMenuOpen ? <FaTimes className="hamburger-icon" /> : <FaBars className="hamburger-icon" />}
           </div>
         </button>
       </nav>
 
       {/* Mobile Menu Overlay */}
-      <div className={`mobile-overlay ${isMenuOpen ? "open" : ""}`} onClick={closeMenu}></div>
+      <div className={`mobile-overlay ${isMenuOpen ? "open" : ""}`} onClick={closeMenu} aria-hidden={!isMenuOpen} />
 
       {/* Mobile Menu */}
       <div className={`mobile-menu ${isMenuOpen ? "open" : ""}`}>
+        {/* Mobile Header */}
         <div className="mobile-header">
           <div className="mobile-brand">
             <span className="brand-text">Geeth</span>
@@ -124,7 +121,8 @@ const Navbar = () => {
           </button>
         </div>
 
-        <div className="mobile-nav">
+        {/* Mobile Navigation */}
+        <nav className="mobile-nav">
           {navItems.map((item, index) => (
             <Link
               key={index}
@@ -141,12 +139,21 @@ const Navbar = () => {
               <div className="mobile-nav-arrow">→</div>
             </Link>
           ))}
-        </div>
+        </nav>
 
+        {/* Mobile Footer */}
         <div className="mobile-footer">
-          <Link to="contact" smooth={true} duration={500} offset={-80} className="mobile-contact-btn" onClick={closeMenu}>
+          <Link
+            to="contact"
+            smooth={true}
+            duration={500}
+            offset={-80}
+            className="mobile-contact-btn"
+            onClick={closeMenu}
+          >
             <span>Let's Connect</span>
           </Link>
+
           <div className="mobile-social">
             <span className="mobile-social-text">Follow me</span>
             <div className="mobile-social-links">
