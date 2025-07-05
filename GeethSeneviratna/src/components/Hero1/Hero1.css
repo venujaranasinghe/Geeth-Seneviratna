@@ -1,0 +1,216 @@
+.hero {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 35px;
+ 
+  padding: 100px 0;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+
+  /* ✅ Use profile_img.jpg as background */
+  background-image: url('../../assets/profile_img.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.8); /* Optional: darken background */
+  z-index: 0;
+}
+
+.hero > *:not(.overlay) {
+  position: relative;
+  z-index: 1;
+}
+
+.hello-animation {
+  margin-top: 10px;
+  font-size: 90px;
+  font-weight: 600;
+  background: white;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  margin-top: 5px;
+  animation: continuousTypewriter 3s steps(6) infinite;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 6ch;
+  
+}
+
+@keyframes continuousTypewriter {
+  0% { width: 0; }
+  50% { width: 6ch; }
+  100% { width: 0; }
+}
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInFromLeft {
+  from { opacity: 0; transform: translateX(-50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.hero h1 {
+  text-align: center;
+  width: 70%;
+  font-size: 70px;
+  font-weight: 600;
+  animation: slideInFromLeft 1s ease-out 2s both;
+  color: white;
+}
+
+.hero h1 span {
+  background: white;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+  width: 50%;
+  text-align: center;
+  font-size: 24px;
+  line-height: 40px;
+  animation: fadeInUp 1s ease-out 3.5s both;
+  color: white;
+}
+
+.hero-action {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 50px;
+  animation: fadeInUp 1s ease-out 4s both;
+}
+
+.hero-connect {
+  padding: 25px 45px;
+  border-radius: 50px;
+  background: linear-gradient(264deg, #df8908 -5.09%, #b415ff 106.28%);
+  cursor: pointer;
+}
+
+.hero-resume {
+  padding: 25px 75px;
+  border-radius: 50px;
+  border: 2px solid #fff;
+  cursor: pointer;
+}
+
+.hero-connect:hover,
+.hero-resume:hover {
+  transform: scale(1.09);
+  transition: all 0.7s ease;
+}
+
+.hero-connect:hover {
+  border: 2px solid white;
+}
+
+.hero-resume:hover {
+  border-color: #b415ff;
+}
+
+.social-container {
+  animation: fadeInUp 1s ease-out 4.5s both;
+}
+
+.social-container h4 {
+  text-align: center;
+  width: 70%;
+  font-size: 30px;
+  font-weight: 600;
+  margin-left: 40px;
+}
+
+.social-icons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 50px;
+}
+
+.social-icons a {
+  font-size: 24px;
+  color: #fff;
+  background: linear-gradient(264deg, #df8908 -5.09%, #b415ff 106.28%);
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(180, 21, 255, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.social-icons a:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(180, 21, 255, 0.8);
+}
+
+.social-icons a:active {
+  transform: scale(0.95);
+}
+
+@media (max-width: 768px) {
+  .hero img {
+    margin-top: 120px;
+    width: 260px;
+  }
+
+  .hello-animation {
+    font-size: 50px;
+    margin-top: -15px;
+  }
+
+  .hero h1 {
+    
+    width: 90%;
+    font-size: 50px;
+  }
+
+  .hero p {
+    width: 60%;
+    font-size: 18px;
+    line-height: 32px;
+    margin: 10px 0px;
+  }
+
+  .hero-action {
+    gap: 16px;
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 50px;
+  }
+
+  .hero-connect {
+    padding: 20px 30px;
+    border-radius: 40px;
+  }
+
+  .hero-resume {
+    padding: 20px 50px;
+    border-radius: 40px;
+  }
+}

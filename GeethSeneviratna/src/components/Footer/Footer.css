@@ -1,0 +1,103 @@
+.footer{
+    margin:  50px 170px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.footer-top{
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-top-left h1{
+    background: linear-gradient(270deg, #DF8908 80%, #B415FF 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 30px;
+}
+
+.footer-top-left p{
+    font-size: 18px;
+    max-width: 400px;
+}
+
+.footer-top-right{
+    display: flex;
+    align-items: center;
+    gap: 35px;
+}
+
+.footer-email-input{
+    display: flex;
+    gap: 30px;
+    padding: 20px 30px;
+    border-radius: 50px;
+    background: #32323B;
+    padding-right: 80px;
+}
+
+.footer-email-input input{
+    outline: none;
+    border: none;
+    background: transparent;
+    color: #a0a0a0;
+    font-family: Outfit;
+    font-size: 18px;
+}
+
+.footer-subscribe{
+    font-size: 18px;
+    padding: 18px 40px;
+    border-radius: 50px;
+    background: linear-gradient(264deg, #DF8908 -5.09%, #B415FF 106.28%);
+    cursor: pointer;
+    transition: 0.3s;
+
+}
+
+.footer-bottom{
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+}
+
+.footer-bottom-right{
+    display: flex;
+    gap: 50px;
+    margin-bottom: 50px;
+}
+
+.footer-email-input:hover{
+    border: 2px solid white;
+}
+
+.footer-subscribe:hover{
+   transform: scale(1.1);
+   transition: 0.3s; 
+}
+
+hr {
+    border: none; /* Remove the default border */
+    height: 3px; /* Adjust thickness */
+    background: linear-gradient(to right, #ff4d4d, #ff4dff, #6b47ff);
+    margin: 20px 0; /* Add spacing (optional) */
+  }
+
+  @media(max-width:768px){
+    .footer{
+        margin: 50px 70px;
+    }
+    .footer-top{
+        flex-direction: column;
+        gap: 50px;
+    }
+    .footer-bottom{
+        display: flex;
+        flex-direction: column-reverse;
+        margin-bottom: 50px;
+    }
+
+  }
+

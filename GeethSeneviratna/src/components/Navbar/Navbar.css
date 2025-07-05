@@ -1,0 +1,134 @@
+/* ===== Desktop Navbar ===== */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 100px;
+  background-color: rgb(32, 32, 32);
+  
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Nav menu desktop */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 60px;
+  font-size: 20px;
+ 
+}
+
+.nav-contact {
+  padding: 10px 40px;
+  border-radius: 50px;
+  background: rgb(255, 255, 255);
+  font-size: 20px;
+  cursor: pointer;
+  color: rgb(4, 4, 4);
+  font-weight: 600;
+  transition: transform 0.3s ease;
+}
+
+.nav-contact:hover {
+  transform: scale(1.05);
+}
+
+.nav-menu li {
+  cursor: pointer;
+}
+
+/* ===== Anchor Link Styling ===== */
+.anchor-link {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  position: relative;
+}
+
+.anchor-link::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(to right, #ff4d4d, #ff4dff, #6b47ff);
+  transition: width 0.3s ease;
+  
+}
+
+.anchor-link:hover::after {
+  width: 100%;
+}
+
+.anchor-link:hover {
+ 
+  background: linear-gradient(267deg, #DA7C25 0.36%, #B923E1 102.06%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* ===== Mobile Menu Buttons ===== */
+.nav-mob-open,
+.nav-mob-close {
+  display: none;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: white;
+}
+
+/* ===== Mobile Styles ===== */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 20px 30px;
+  }
+
+  .nav-contact {
+    display: none;
+  }
+
+  .nav-mob-open {
+    display: block;
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    right: -350px;
+    width: 300px;
+    height: 100%;
+    background-color: #242424;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px;
+    padding: 80px 30px;
+    box-shadow: -2px 0 10px rgba(255, 255, 255, 0.5);
+    transition: right 0.5s ease;
+    z-index: 1001;
+  }
+
+  .nav-menu.open {
+    right: 0;
+  }
+
+  .nav-menu li {
+    font-size: 24px;
+    padding-left: 10px;
+  }
+
+  .nav-mob-close {
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+}
